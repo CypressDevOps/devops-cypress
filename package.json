@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "npx cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "npx cypress run --spec cypress/e2e/1-open-wiki/*cy.js"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.4"
+  }
+}
