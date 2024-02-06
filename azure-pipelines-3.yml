@@ -19,14 +19,22 @@ stages:
         npm install mocha-junit-reporter --save-dev
       displayName: 'Install Dependencies and Cypress'
 
+    # Publish Cypress tests as artifacts
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/cypress/e2e'
+        artifactName: 'cypress-tests'
+        publishLocation: 'Container'
+
 - stage: Cypress_Tests
   dependsOn: Build
   jobs:
   - job: OpenWiki
     displayName: 'Open Wiki'
     steps:
+    # Download Cypress tests artifact from Build stage
     - download: current
-      artifact: drop
+      artifact: cypress-tests
     - script: |
         cd $(System.DefaultWorkingDirectory)/cypress/e2e/1-open-wiki
         npm run cypress:run
@@ -39,8 +47,9 @@ stages:
   - job: CheckWiki
     displayName: 'Check Wiki'
     steps:
+    # Download Cypress tests artifact from Build stage
     - download: current
-      artifact: drop
+      artifact: cypress-tests
     - script: |
         cd $(System.DefaultWorkingDirectory)/cypress/e2e/2-check-wiki
         npm run cypress:run
