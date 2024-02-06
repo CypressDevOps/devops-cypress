@@ -26,7 +26,7 @@ stages:
         npm run cypress:open -- --config video=false
       displayName: 'Open Cypress'
 
-- stage: 1-open-wiki
+- stage: open-wiki
   dependsOn: Build
   jobs:
   - job: TestJob
@@ -42,7 +42,7 @@ stages:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/test-results.xml'
       
-- stage: 2-check-wiki
+- stage: check-wiki
   dependsOn: Build
   jobs:
   - job: TestJob
