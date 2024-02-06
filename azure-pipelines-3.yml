@@ -19,7 +19,7 @@ stages:
         npm install mocha-junit-reporter --save-dev
       displayName: 'Install Dependencies and Cypress'
 
-- stage: Cypress tests
+- stage: Cypress_Tests
   dependsOn: Build
   jobs:
   - job: OpenWiki
