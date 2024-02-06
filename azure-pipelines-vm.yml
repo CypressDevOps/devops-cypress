@@ -2,17 +2,9 @@ trigger:
 - master
 
 pool:
-  vmImage: windows-latest
+  name: Azure Pipelines
 
 steps:
-- script: |
-    npm install -g yarn
-  displayName: 'Install Yarn'
-
-- script: |
-    pwd
-    ls -al
-  displayName: 'Debug Information'
 
 - task: NodeTool@0
   inputs:
