@@ -37,7 +37,7 @@ stages:
       artifact: cypress-tests
     - script: |
         cd $(System.DefaultWorkingDirectory)/cypress/e2e/1-open-wiki
-        npm run cypress:run
+        npm run cypress:run:open-wiki
       displayName: 'Run Cypress Tests'
     - task: PublishTestResults@2
       inputs:
@@ -52,7 +52,7 @@ stages:
       artifact: cypress-tests
     - script: |
         cd $(System.DefaultWorkingDirectory)/cypress/e2e/2-check-wiki
-        npm run cypress:run
+        npm run cypress:run:check-wiki
       displayName: 'Run Cypress Tests'
     - task: PublishTestResults@2
       inputs:
